@@ -18,15 +18,89 @@
         <main>
             <section id="reader">
                 <h2>借阅人信息</h2>
-                <p>填写借阅人的姓名、学号、联系方式等信息。</p>
-            </section>
+                <fieldset>
+                    <legend>借阅人信息</legend>
+                    <p>
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" placeholder="请输入姓名" required>
+                    </p>
+                    <p>
+                        <label for="id">学号</label>
+                        <input type="text" id="id" name="id" placeholder="请输入学号" 
+                            pattern="[0-9]{10}" title="学号应为10位数字" required>
+                    </p>
+                    <p>
+                        <label for="email">邮箱</label>
+                        <input type="email" id="email" name="email" placeholder="请输入邮箱" required>
+                    </p>
+                    <p>
+                        <label for="phone">手机号</label>
+                        <input type="text" id="phone" name="phone" placeholder="11位手机号"
+                            pattern="1[3-9][0-9]{9}" maxlength="11" title="请输入1开头、第二位是3-9的11位手机号" required>
+                    </p>
+                </fieldset>
             <section id="book">
                 <h2>图书信息</h2>
-                <p>填写借阅的图书的名称、作者、ISBN等信息。</p>
+                <fieldset>
+                    <legend>图书信息</legend>
+                    <p>
+                        <label for="name">图书名称</label>
+                        <input type="text" id="name" name="name" placeholder="请输入图书名称" required>
+                    </p>
+                    <p>
+                        <label for="author">作者</label>
+                        <input type="text" id="author" name="author" placeholder="请输入作者" required>
+                    </p>
+                    <p>
+                       <label for="category">图书分类</label>
+                       <select id="category" name="category">
+                          <option value="">请选择</option>
+                          <option value="文学">文学</option>
+                          <option value="哲学">哲学</option>
+                          <option value="历史">历史</option>
+                          <option value="科学">科学</option>
+                          <option value="艺术">艺术</option>
+                      </select>
+                    </p>
+                    <p>
+                       <label for="book-count">借阅册数(1~5)</label>
+                       <input type="number" id="book-count" name="book-count" min="1" max="5" value="1">
+                    </p>
+                </fieldset>
             </section>
             <section id="loan">
                 <h2>借阅设置</h2>
-                <p>填写借阅的图书的借阅时间、归还时间等信息。</p>
+                <fieldset>
+                    <legend>借阅设置</legend>
+                    <p>
+                        <label for="borrowDate">借出时间</label>
+                        <input type="date" id="borrowDate" name="borrowDate" required>
+                    </p>
+                    <p>
+                        <label for="returnDate">归还时间</label>
+                        <input type="date" id="returnDate" name="returnDate" required>
+                    </p>
+                    </fieldset>
+                    <p>想借阅的时间(单选)</p>
+                    <p>
+                        <input type="radio" id="period-7" name="period" value="7">
+                        <label for="period-7">7天</label>
+                        <input type="radio" id="period-30" name="period" value="30">
+                        <label for="period-30">30天</label>
+                        <input type="radio" id="period-90" name="period" value="90">
+                        <label for="period-90">90天</label>
+                    </p>
+                    <fieldset>
+                        <input type="checkbox" id="agree-rules" name="agree-rules" required>
+                        <label for="agree-rules">我已阅读并同意《图书馆借阅规章》</label>
+                    </fieldset>
+                    <p>
+                        <label for="remark">备注（选填）</label>
+                        <textarea id="remark" name="remark" rows="4" cols="40" placeholder="其他需要说明的情况"></textarea>
+                    </p>
+    <p>
+        <button type="submit">提交借阅登记</button>
+    </p>
             </section>
         </main>
         <footer>
