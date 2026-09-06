@@ -40,3 +40,82 @@ body {
         padding:24px;
     }
 }
+
+/* ===== 任务一：clamp() 流式排版 ===== */
+/* clamp(最小值, 理想值, 最大值)：字号随窗口宽度平滑变化，不突变 */
+
+/* 区块标题：18px(手机) ~ 28px(桌面) */
+section h2 {
+    font-size: clamp(18px, 2.5vw, 28px);
+}
+
+/* 卡片标题：16px ~ 22px */
+.course-card h3 {
+    font-size: clamp(16px, 1.8vw, 22px);
+}
+
+/* Logo 文字：18px ~ 24px */
+.logo {
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 700;
+    text-decoration: none;
+    color: #333;
+}
+
+/* 卡片内边距也用 clamp：窄屏更紧凑 */
+.course-card {
+    padding: clamp(12px, 1.5vw, 24px);
+}
+
+/* ===== 任务二：深色模式（跟随系统 prefers-color-scheme） ===== */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #1a1d22;
+        color: #e5e7eb;
+    }
+    .logo { color: #e5e7eb; }
+    .main-nav a { color: #60a5fa; }
+    .course-card {
+        background: #242830;
+        border-color: #374151;
+    }
+    .course-card h3 { color: #4ade80; }
+    .course-card p { color: #b0b7c3; }
+    .course-card a { color: #60a5fa; }
+    footer { color: #6b7280; }
+}
+
+/* ===== 任务三：打印样式（@media print 只在打印/预览时生效） ===== */
+@media print {
+    /* 规则1：隐藏导航和页脚，打印不需要 */
+    .site-header,
+    footer { display: none !important; }
+
+    /* 规则2：卡片墙强制单栏打印 */
+    .card-grid {
+        display: block;
+    }
+    .card-grid .course-card {
+        width: 100%;
+        margin-bottom: 12px;
+        break-inside: avoid;  /* 卡片不被分页切断 */
+    }
+
+    /* 规则3：去掉圆角和边框阴影，节省墨 */
+    .course-card {
+        box-shadow: none;
+        border-radius: 0;
+        border: 1px solid #ccc;
+        background: #fff;
+    }
+
+    /* 规则4：所有背景透明、文字黑色，省墨 */
+    body { background: #fff !important; color: #000 !important; }
+    * { background: transparent !important; }
+
+    /* 规则5：链接后显示实际网址 */
+    a::after {
+        content: " (" attr(href) ")";
+        font-size: .8em;
+    }
+}

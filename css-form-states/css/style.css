@@ -1,0 +1,23 @@
+body { max-width: 520px; margin: 40px auto; padding: 0 16px;
+       font-family: "Microsoft YaHei", Arial, sans-serif; }
+
+input {
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 聚焦高亮 */
+input:focus {
+    outline: none;
+    border-color: #4a6cf7;
+    box-shadow: 0 0 0 3px rgba(74,108,247,.25);
+}
+
+/* 校验不通过 → 红框 */
+input:invalid { border-color: #e53935; }
+
+/* 校验通过 → 绿框 */
+input:valid { border-color: #43a047; }
