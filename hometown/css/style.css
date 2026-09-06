@@ -88,3 +88,31 @@ footer {
 .card-body { padding: 14px 16px 18px; }
 .card-body h3 { margin: 0 0 6px; color: #0f6e4e; }
 .card-body p { margin: 0; font-size: .95rem; color: #555; }
+/* 民俗区：Flex 两栏，窄屏自动上下堆叠 */
+.culture-wrap {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.culture-text, .culture-list {
+    flex: 1 1 280px;   /* 两栏等宽，窄于280px就折行 */
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    margin: 0;
+}
+.culture-list { list-style: none; line-height: 2.2; }
+
+/* 断点1：平板及以下（≤768px），导航竖排、横幅字变小 */
+@media (max-width: 768px) {
+    .nav-wrap { flex-direction: column; align-items: flex-start; }
+    .hero { padding: 32px 16px 40px; }
+    .hero h1 { font-size: 1.5rem; }
+}
+
+/* 断点2：宽屏（≥992px），卡片图加高、正文更舒展 */
+@media (min-width: 992px) {
+    .card img { height: 240px; }
+    .card-body { padding: 18px 22px 22px; }
+}
