@@ -19,4 +19,35 @@ const cleanExpenses = (list) => {
         return isNumber && isPositive;
     });
 };
+//计算总支出金额
+//使用数组方法 reduce 累加所有 amount
+const calcTotal = (list) => {
+    return list.reduce((sum, item) => sum + item.amount, 0);
+};
 
+//按天分组统计每天支出
+//使用数组方法 reduce 遍历累加
+const groupByDay = (list) => {
+    return list.reduce((days, item) => {
+        const d = item.day;
+        days[d] = (days[d] || 0) + item.amount;
+        return days;
+    }, {});
+};
+
+//按类别分组统计每类支出
+//使用数组方法 reduce 遍历累加
+const groupByCategory = (list) => {
+    return list.reduce((cats, item) => {
+        const c = item.category;
+        cats[c] = (cats[c] || 0) + item.amount;
+        return cats;
+    }, {});
+};
+
+//找出最高单笔消费
+//使用数组方法 reduce 逐个比较
+const findHighest = (list) => {
+    if (list.length === 0) return null;
+    return list.reduce((max, item) => item.amount > max.amount ? item : max, list[0]);
+};
