@@ -51,3 +51,45 @@ const findHighest = (list) => {
     if (list.length === 0) return null;
     return list.reduce((max, item) => item.amount > max.amount ? item : max, list[0]);
 };
+//格式化消费报告
+const generateReport = (list) => {
+    const valid = cleanExpenses(list);
+    if (valid.length === 0) {
+        return '没有有效消费记录';
+    }
+
+    const total = calcTotal(valid);
+    const byDay = groupByDay(valid);
+    const byCategory = groupByCategory(valid);
+    const highest = findHighest(valid);
+    const validDays = Object.keys(byDay).length;
+    const dailyAvg = (total / validDays).toFixed(2);
+
+    // 使用 map 把分组对象转成可读的明细字符串
+    const dayDetails = Object.keys(byDay)
+        .map(d => `${d}:${byDay[d]}元`)
+        .join(',');
+
+    const categoryDetails = Object.keys(byCategory)
+        .map(c => `${c}:${byCategory[c]}元`)
+        .join(',');
+
+    // 找出花钱最多的类别
+    const topCategory = Object.keys(byCategory)
+        .reduce((top, cat) => byCategory[cat] > byCategory[top] ? cat : top, Object.keys(byCategory)[0]);
+
+    return `【一周消费报告】
+有效消费 ${valid.length} 笔（过滤非法 ${list.length - valid.length} 条）；
+总支出 ${total} 元，日均 ${dailyAvg} 元；
+每日明细：${dayDetails};
+类别明细：${categoryDetails};
+最高单笔：${highest.amount}元 (${highest.desc});
+花钱最多的类别：${topCategory}(${byCategory[topCategory]}元)`;
+};
+
+// 主程序：用 try-catch 包裹，防止运行时出错导致程序崩溃
+try {
+    console.log(generateReport(expenses));
+} catch (err) {
+    console.error('报告生成失败：', err.message);
+}
