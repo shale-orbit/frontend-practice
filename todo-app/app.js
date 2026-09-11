@@ -4,7 +4,8 @@ const tip = document.querySelector('#tip');
 const list = document.querySelector('#task-list');
 const filters = document.querySelector('.filters');
 let currentFilter = 'all'; // all / active / done
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+const save = () => localStorage.setItem('tasks', JSON.stringify(tasks));
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -14,6 +15,7 @@ form.addEventListener('submit', (e) => {
     return;
   }
   tasks.push({ text: text, done: false });
+  save();        // 数据变了，立刻存起来
   tip.textContent = '';
   input.value = '';
   render();
@@ -37,6 +39,7 @@ const render = () => {
     if (task.done) li.classList.add('done');
     li.addEventListener('click', () => {
       task.done = !task.done;    // 切换状态：改的是数组里的对象
+      save();                    // 状态变了，立刻存起来
       render();
     });
     list.appendChild(li);
