@@ -18,6 +18,7 @@ const loadData = async () => {
     $('#status').hide();
     renderCitySwitcher(data);
     renderCards(data);
+    renderBarChart(data);
   } catch (error) {
     $('#status').text('加载失败：' + error.message).show();
   }
@@ -54,6 +55,26 @@ const renderCards = (data) => {
         </div>
       </div>
     `);
+  });
+};
+
+// ECharts 柱状图：两城市每天降水量对比
+let barChart = null;
+const renderBarChart = (data) => {
+  if (barChart === null) {
+    barChart = echarts.init(document.querySelector('#bar-chart'));
+  }
+  barChart.setOption({
+    title: { text: '成都 vs 昆明 日降水量', left: 'center' },
+    tooltip: { trigger: 'axis' },
+    legend: { bottom: 0 },
+    xAxis: { type: 'category', data: data.dates },
+    yAxis: { type: 'value', name: 'mm', min: 0 },
+    series: data.cities.map(city => ({
+      name: city.name,
+      type: 'bar',
+      data: city.rainfalls
+    }))
   });
 };
 
