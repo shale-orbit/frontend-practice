@@ -19,6 +19,7 @@ const loadData = async () => {
     renderCitySwitcher(data);
     renderCards(data);
     renderBarChart(data);
+    renderLineChart(data, state.currentCity);
   } catch (error) {
     $('#status').text('加载失败：' + error.message).show();
   }
@@ -78,11 +79,49 @@ const renderBarChart = (data) => {
   });
 };
 
-// 事件委托：按钮点击后切换当前城市
+// Chart.js 折线图：当前选中城市的温度趋势
+let lineChart = null;
+const renderLineChart = (data, cityIndex) => {
+  if (lineChart !== null) {
+    lineChart.destroy();   // 防重复初始化
+  }
+  const city = data.cities[cityIndex];
+  const ctx = document.querySelector('#line-chart');
+  lineChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data.dates,
+      datasets: [{
+        label: city.name + ' 温度',
+        data: city.temps,
+        borderWidth: 2,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: { display: true, text: city.name + ' 一周温度变化（℃）' }
+      },
+      scales: {
+        y: { beginAtZero: false }   // 温度不需要从0开始
+      }
+    }
+  });
+};
+
+// 事件委托：按钮点击后切换当前城市并重绘折线图
 $('#city-switcher').on('click', 'button', function () {
   state.currentCity = parseInt($(this).attr('data-city-index'));
   $('#city-switcher button').removeClass('active');
   $(this).addClass('active');
+  renderLineChart(state.data, state.currentCity);
+});
+
+// 统一 resize：ECharts 需手动重绘，Chart.js 默认自动响应
+window.addEventListener('resize', () => {
+  if (barChart) barChart.resize();
 });
 
 loadData();
