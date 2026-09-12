@@ -8,12 +8,11 @@ const formTitle = document.querySelector('#form-title');
 const tip = document.querySelector('#tip');
 const list = document.querySelector('#contact-list');
 
-let editIndex = -1;                              // -1=新增，其他=正在编辑的下标
+let editIndex = -1;
 let contacts = JSON.parse(localStorage.getItem('contacts') || '[]');
 
 const save = () => localStorage.setItem('contacts', JSON.stringify(contacts));
 
-// 渲染：根据 contacts 数组重画表格
 const render = () => {
   list.innerHTML = '';
   if (contacts.length === 0) {
@@ -41,8 +40,25 @@ const render = () => {
   });
 };
 
-// 第二步再实现增删改，先占位避免按钮点击报错
-list.addEventListener('click', () => {});
-form.addEventListener('submit', (e) => e.preventDefault());
+list.addEventListener('click', () => {});   // 第三步实现删除/修改
+
+// 表单提交：新增联系人 + 输入校验
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = nameInput.value.trim();
+  const phone = phoneInput.value.trim();
+  const email = emailInput.value.trim();
+
+  if (name === '') { tip.textContent = '姓名不能为空'; return; }
+  if (!/^1\d{10}$/.test(phone)) { tip.textContent = '请输入正确的11位手机号'; return; }
+  if (!/^[\w.+-]+@[\w-]+\.[\w.-]+$/.test(email)) { tip.textContent = '邮箱格式不正确'; return; }
+
+  // 先改数组，再存，再渲染
+  contacts.push({ name, phone, email });
+  save();
+  form.reset();
+  tip.textContent = '';
+  render();
+});
 
 render();
