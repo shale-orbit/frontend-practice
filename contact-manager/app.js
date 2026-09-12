@@ -40,9 +40,40 @@ const render = () => {
   });
 };
 
-list.addEventListener('click', () => {});   // 第三步实现删除/修改
+// 事件委托：点删除/修改按钮
+list.addEventListener('click', (e) => {
+  const i = +e.target.dataset.i;
+  if (e.target.classList.contains('del-btn')) {
+    if (confirm('确定删除吗？')) {
+      contacts.splice(i, 1);          // 改数组
+      save();                         // 存
+      render();                       // 渲染
+    }
+  }
+  if (e.target.classList.contains('edit-btn')) {
+    editIndex = i;
+    const c = contacts[i];
+    nameInput.value = c.name;
+    phoneInput.value = c.phone;
+    emailInput.value = c.email;
+    formTitle.textContent = '修改联系人';
+    submitBtn.textContent = '保存';
+    cancelBtn.style.display = '';
+    tip.textContent = '';
+  }
+});
 
-// 表单提交：新增联系人 + 输入校验
+// 取消编辑
+cancelBtn.addEventListener('click', () => {
+  editIndex = -1;
+  form.reset();
+  formTitle.textContent = '添加联系人';
+  submitBtn.textContent = '添加';
+  cancelBtn.style.display = 'none';
+  tip.textContent = '';
+});
+
+// 表单提交：根据 editIndex 判断新增还是修改
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const name = nameInput.value.trim();
@@ -53,8 +84,15 @@ form.addEventListener('submit', (e) => {
   if (!/^1\d{10}$/.test(phone)) { tip.textContent = '请输入正确的11位手机号'; return; }
   if (!/^[\w.+-]+@[\w-]+\.[\w.-]+$/.test(email)) { tip.textContent = '邮箱格式不正确'; return; }
 
-  // 先改数组，再存，再渲染
-  contacts.push({ name, phone, email });
+  if (editIndex === -1) {
+    contacts.push({ name, phone, email });       // 新增
+  } else {
+    contacts[editIndex] = { name, phone, email }; // 修改
+    editIndex = -1;
+    formTitle.textContent = '添加联系人';
+    submitBtn.textContent = '添加';
+    cancelBtn.style.display = 'none';
+  }
   save();
   form.reset();
   tip.textContent = '';
