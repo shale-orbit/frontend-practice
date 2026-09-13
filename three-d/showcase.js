@@ -4,7 +4,7 @@ scene.fog = new THREE.Fog(0x16213e, 8, 20);         // 雾：远处渐隐，出�
 
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
 camera.position.set(4, 3, 6);
-
+//camera.position.set(0,0,0);将摄像机放在原点
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
@@ -45,6 +45,9 @@ scene.add(items);
 const animate = () => {
   requestAnimationFrame(animate);
   items.rotation.y += 0.005;
+  /*items.children.forEach(mesh => {
+    mesh.rotation.y += 0.005;
+  });对比：将group写法换成循环写法*/
   renderer.render(scene, camera);
 };
 animate();
