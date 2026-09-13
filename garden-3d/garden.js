@@ -104,7 +104,33 @@ function createWindmill(x,z){
   return rotor;                                
 }
 const rotors = [createWindmill(-4.5, -2.5)];
+//添加长椅
+function createBench(x, z, rotY) {
+  const bench = new THREE.Group();
+  const benchMat = new THREE.MeshStandardMaterial({ color: 0x6d4c41 });
+  const seat = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.08, 0.45), benchMat);
+  seat.position.y = 0.45;
+  const back = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.5, 0.08), benchMat);
+  back.position.set(0, 0.72, -0.2);
+  const leg1 = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.45, 0.1), benchMat);
+  leg1.position.set(-0.55, 0.22, 0);
+  const leg2 = leg1.clone();
+  leg2.position.x = 0.55;
+  bench.add(seat, back, leg1, leg2);
+  bench.position.set(x, 0, z);
+  bench.rotation.y = rotY;
+  scene.add(bench);
+}
+createBench(3.5, 0.8, -0.6);
 
+// 添加草丛点缀（小圆锥随机散布） 
+const tuftMat = new THREE.MeshStandardMaterial({ color: 0x9ccc65 });
+for (let i = 0; i < 14; i++) {
+  const tuft = new THREE.Mesh(new THREE.ConeGeometry(0.07, 0.28, 6), tuftMat);
+  tuft.position.set((Math.random() - 0.5) * 10, 0.14, -Math.random() * 6 + 1);
+  tuft.rotation.y = Math.random() * Math.PI;
+  scene.add(tuft);
+}
 
 //  渲染循环 
 function animate() {
