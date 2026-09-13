@@ -76,10 +76,42 @@ function createTree(x, z, scale) {
 }
 createTree(3, -4, 1.1);
 createTree(-3.5, -4.5, 0.9);
+//添加小风车
+const woodMat = new THREE.MeshStandardMaterial({ color: 0xa1887f });
+const bladeMat = new THREE.MeshStandardMaterial({ color: 0xfafafa});
+const hubMat = new THREE.MeshStandardMaterial({ color: 0xe53935 });
+function createWindmill(x,z){
+    const mill = new THREE.Group();
+    const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.08,0.12,2.2,12),woodMat);
+    pole.position.y = 1.1;
+        const rotor = new THREE.Group();
+    rotor.position.set(0, 2.4, 0.2);
+    const hub = new THREE.Mesh(new THREE.SphereGeometry(0.13, 12, 12), hubMat);  // 红色轮毂小球
+    rotor.add(hub);
+
+    const bladeGeo = new THREE.BoxGeometry(0.1, 1.0, 0.04);   // 桨叶形状只建一次，4片复用
+    for (let i = 0; i < 4; i++) {                // 4片桨叶十字均布
+      const a = (i / 4) * Math.PI * 2;
+      const blade = new THREE.Mesh(bladeGeo, bladeMat);
+      blade.position.set(Math.cos(a) * 0.55, Math.sin(a) * 0.55, 0);
+      blade.rotation.z = a + Math.PI / 2;        // 叶片沿径向摆放
+      rotor.add(blade);
+    }
+
+  mill.add(pole, rotor);
+  mill.position.set(x, 0, z);
+  scene.add(mill);
+  return rotor;                                
+}
+const rotors = [createWindmill(-4.5, -2.5)];
+
 
 //  渲染循环 
 function animate() {
   requestAnimationFrame(animate);
+  rotors.forEach(rotor => {
+    rotor.rotation.z += 0.03;
+  });
   controls.update();
   renderer.render(scene, camera);
 }
