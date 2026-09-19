@@ -1,0 +1,32 @@
+{
+  "profile": {
+    "name": "我",
+    "major": "计算机科学与技术",
+    "grade": "大二",
+    "intro": "正在夯实网页开发、Git版本控制等基础技术，对前端网页制作很感兴趣。",
+    "tags": ["前端初学者", "Git 使用中", "家乡：四川西昌", "敬佩袁隆平"]
+  },
+  "quote": {
+    "text": "人就像种子，要做一粒好种子。",
+    "author": "袁隆平"
+  },
+  "hometown": {
+    "city": "四川 · 西昌",
+    "slogan": "一座春天栖息的城市",
+    "sights": [
+      { "name": "琼海湿地公园", "img": "images/qionghai lake.jpg", "desc": "四川第二大淡水湖，环湖湿地成群、鸥鹭翔集，是西昌人的“后花园”。" },
+      { "name": "螺髻山", "img": "images/ljmountain.jpg", "desc": "高山湖泊、古冰川遗迹与杜鹃花海，“峨眉山似女人蚕眉，螺髻山似少女螺髻”。" },
+      { "name": "建昌古城", "img": "images/ancient city.jpg", "desc": "六百余年历史的明清古城，城楼、老街与夜市灯火，留住老西昌的记忆。" }
+    ],
+    "foods": [
+      { "name": "火盆烧烤", "img": "images/barbecue.jpg", "desc": "西昌人的夏夜仪式感：炭火盆上烤小香猪、洋芋、小肠，蘸干碟吃。" },
+      { "name": "琼海醉虾", "img": "images/drunk shrimp.jpg", "desc": "取琼海鲜活小虾，以调料酒醉制，肉质鲜甜，是湖边限定的风味。" },
+      { "name": "建昌板鸭", "img": "images/duck.jpg", "desc": "选当地放养麻鸭腌制风干，肉质紧实咸香，蒸着吃最能体现本味。" }
+    ]
+  },
+  "timeAllocation": {
+    "title": "我的一周时间分配",
+    "labels": ["上课与自习", "写代码", "阅读", "运动", "娱乐"],
+    "values": [30, 25, 15, 10, 20]
+  }
+}

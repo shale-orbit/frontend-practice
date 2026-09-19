@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人信息展示页之我的家乡</title>
+  <link rel="icon" href="data:">
+  <link href="libs/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg site-nav sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">我的个人主页</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="切换导航">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">关于我</a></li>
+          <li class="nav-item"><a class="nav-link" href="figure.html">我敬佩的人</a></li>
+          <li class="nav-item"><a class="nav-link active" href="hometown.html">我的家乡</a></li>
+          <li class="nav-item"><a class="nav-link" href="todo-app.html">任务清单</a></li>
+          <li class="nav-item"><a class="nav-link" href="campus.html">我的校园</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero text-white text-center">
+    <div class="container">
+      <h1 class="fw-bold" id="hero-city">我的家乡</h1>
+      <p class="lead mb-0" id="hero-slogan"></p>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <section class="mb-5">
+      <h2 class="h4 mb-4">必游景点</h2>
+      <div class="row g-4" id="sight-list"></div>
+      <p class="text-muted mt-3 d-none" id="sight-tip">暂无景点数据。</p>
+    </section>
+    <section class="mb-5">
+      <h2 class="h4 mb-4">特色美食</h2>
+      <div class="row g-4" id="food-list"></div>
+      <p class="text-muted mt-3 d-none" id="food-tip">暂无美食数据。</p>
+    </section>
+    <section>
+      <h2 class="h4 mb-4">民俗文化</h2>
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="h5 text-success">彝族火把节</h3>
+          <p>每年农历六月二十四，西昌彝族同胞点燃火把、载歌载舞，斗牛、选美、篝火晚会通宵达旦，被誉为“东方狂欢节”。火把照亮的不仅是夜空，更是这座城市多民族共居的热情。</p>
+          <ul class="mb-0">
+            <li>火把节 —— 农历六月二十四</li>
+            <li>达体舞 —— 围着篝火全员共舞</li>
+            <li>砣砣肉 —— 彝族传统待客大菜</li>
+            <li>彝族漆器 —— 黑红黄三色纹样</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-danger mt-3 d-none" id="data-error">数据加载失败，请刷新重试。</p>
+    </section>
+  </main>
+  <footer class="site-footer text-center text-muted py-4 bg-white">
+    <p class="mb-1">个人信息展示台</p>
+  </footer>
+
+  <script src="libs/bootstrap.bundle.min.js"></script>
+  <script src="js/hometown.js"></script>
+</body>
+</html>
