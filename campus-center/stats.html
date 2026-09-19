@@ -31,15 +31,21 @@
     <main class="container my-5">
         <div class="bg-white rounded-3 shadow-sm p-5 text-center">
             <h1 class="h3">数据统计</h1>
-            <p class="text-muted">本区块为占位内容，第二步完成：加载 data.json，用 ECharts 渲染各自习室使用量柱状图</p>
-            <a href="index.html" class="btn btn-primary">返回首页</a>
+            <p id="status" class="alert alert-warning d-none"></p>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div id="usage-chart" style="height:420px;"></div>
+                    <p class="text-muted text-center mt-3 mb-0" id="data-source">数据来源加载中...</p>
+                </div>
+            </div>
         </div>
     </main>
 
     <footer class="text-center text-muted py-4">
         <p class="mb-0">校园公共信息与数据展示中心</p>
     </footer>
-
+    <script src="libs/echarts.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/stats.js"></script>
 </body>
 </html>

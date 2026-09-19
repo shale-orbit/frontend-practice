@@ -27,19 +27,38 @@
             </div>
         </div>
     </nav>
-
     <main class="container my-5">
-        <div class="bg-white rounded-3 shadow-sm p-5 text-center">
-            <h1 class="h3">自习室查询</h1>
-            <p class="text-muted">本区块为占位内容，第二步完成：复用课堂五的筛选模式，按楼层 / 开放状态过滤自习室列表。</p>
-            <a href="index.html" class="btn btn-primary">返回首页</a>
+        <h1 class="h3 mb-3">自习室查询</h1>
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <div class="row g-3 align-items-end">
+                    <div class="col-12 col-md-4">
+                        <label for="floor-filter" class="form-label">楼层</label>
+                        <select id="floor-filter" class="form-select">
+                            <option value="all">全部楼层</option>
+                            <option value="1楼">1楼</option>
+                            <option value="2楼">2楼</option>
+                            <option value="3楼">3楼</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <label for="status-filter" class="form-label">开放状态</label>
+                        <select id="status-filter" class="form-select">
+                            <option value="all">全部状态</option>
+                            <option value="open">开放中</option>
+                            <option value="closed">已关闭</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <p class="text-muted mb-2" id="result-count"></p>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="row g-4" id="room-list"></div>
     </main>
-
-    <footer class="text-center text-muted py-4">
-        <p class="mb-0">校园公共信息与数据展示中心</p>
-    </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/study.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
