@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人信息展示页之我敬佩的人</title>
+  <link rel="icon" href="data:">
+  <link href="libs/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg site-nav sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">我的个人主页</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="切换导航">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">关于我</a></li>
+          <li class="nav-item"><a class="nav-link active" href="figure.html">我敬佩的人</a></li>
+          <li class="nav-item"><a class="nav-link" href="hometown.html">我的家乡</a></li>
+          <li class="nav-item"><a class="nav-link" href="todo-app.html">任务清单</a></li>
+          <li class="nav-item"><a class="nav-link" href="campus.html">我的校园</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero text-white text-center">
+    <div class="container">
+      <h1 class="fw-bold">袁隆平：一稻济世，万家粮足</h1>
+      <p class="lead mb-0">杂交水稻之父 · 共和国勋章获得者</p>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <div class="row g-4">
+      <div class="col-12 col-lg-7">
+        <section class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h2 class="h4 text-success mb-3">人物生平</h2>
+            <p>1930年9月7日，袁隆平出生于中国北京，是江西省德安县人。1953年从西南农学院毕业后，他被分配到湖南安江农校任教，从此与杂交水稻结缘。从1964年发现天然雄性不育株开始，他数十年扎根田间，把一生都献给了稻田。</p>
+          </div>
+        </section>
+
+        <section class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h2 class="h4 text-success mb-3">主要贡献</h2>
+            <p>袁隆平的主要贡献是发现天然雄性不育株，为杂交水稻的推广提供了基础；发明“三系法”籼型杂交水稻，成功研究出“两系法”杂交水稻，并创建了超级杂交稻技术体系。主要成就包括：</p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">1973年实现籼型杂交水稻“三系”配套，让水稻单产大幅提升</li>
+              <li class="list-group-item">主持超级杂交稻攻关，多次刷新水稻亩产世界纪录</li>
+              <li class="list-group-item">推动耐盐碱水稻（海水稻）研究，拓展粮食生产空间</li>
+              <li class="list-group-item">2019年被授予“共和国勋章”</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="h4 text-success mb-3">相关链接</h2>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="https://baike.baidu.com/item/%E8%A2%81%E9%9A%86%E5%B9%B3" target="_blank" class="btn btn-outline-success btn-sm">百度百科</a>
+              <a href="http://www.xinhuanet.com/politics/2021-05/22/c_1127474977.htm" target="_blank" class="btn btn-outline-success btn-sm">新华网  深切缅怀</a>
+              <a href="http://www.gov.cn/xinwen/2019-09/29/content_5434745.htm" target="_blank" class="btn btn-outline-success btn-sm">中国政府网  共和国勋章</a>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="col-12 col-lg-5">
+        <div class="card quote-card shadow-sm mb-4">
+          <div class="card-body">
+            <p class="quote-text mb-2">人就像种子，要做一粒好种子。</p>
+            <footer class="blockquote-footer text-end mb-0"> 袁隆平</footer>
+          </div>
+        </div>
+
+        <section class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h2 class="h4 text-success mb-3">精神品质</h2>
+            <span class="badge tag-badge me-1 mb-1">求真务实、实践实干</span>
+            <span class="badge tag-badge me-1 mb-1">不畏挫折、坚持不懈</span>
+            <span class="badge tag-badge me-1 mb-1">淡泊名利、无私奉献</span>
+            <span class="badge tag-badge me-1 mb-1">家国情怀、一心为民</span>
+          </div>
+        </section>
+
+        <section class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="h4 text-success mb-3">人物影像</h2>
+            <img src="images/medal.jpg" alt="共和国勋章" class="img-fluid rounded mb-2">
+            <img src="images/seed.jpg" alt="袁隆平院士的照片" class="img-fluid rounded">
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer text-center text-muted py-4 bg-white">
+    <p class="mb-1">个人信息展示台</p>
+  </footer>
+
+  <script src="libs/bootstrap.bundle.min.js"></script>
+</body>
+</html>
