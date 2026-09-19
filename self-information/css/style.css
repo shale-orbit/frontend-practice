@@ -1,0 +1,88 @@
+:root {
+  --theme-green: #2e7d32;      /* 主色：稻田绿 */
+  --theme-green-dark: #1b5e20;
+  --theme-lake: #0277bd;       /* 点缀色：琼海湖蓝 */
+  --theme-bg: #f6f8f4;         /* 页面浅底色 */
+  --theme-quote-bg: #e8f5e9;   /* 名言卡浅绿底 */
+}
+
+body {
+  background-color: var(--theme-bg);
+}
+.site-nav {
+  background-color: var(--theme-green-dark);
+}
+.site-nav .navbar-brand,
+.site-nav .nav-link {
+  color: #ffffff;
+}
+.site-nav .nav-link:hover,
+.site-nav .nav-link.active {
+  color: #ffeb3b;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--theme-green) 0%, var(--theme-lake) 100%);
+  padding: 4rem 0;
+}
+.hero .avatar {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+}
+
+.module-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.module-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.12) !important;
+}
+
+.quote-card {
+  background-color: var(--theme-quote-bg);
+  border-left: 6px solid var(--theme-green);
+}
+.quote-card .quote-text {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.tag-badge {
+  background-color: var(--theme-green);
+}
+
+.task-item {
+  cursor: pointer;
+  user-select: none;
+}
+.task-item.done {
+  text-decoration: line-through;
+  color: #999;
+}
+.task-item .del {
+  margin-left: 12px;
+  color: #c00;
+}
+
+.site-footer {
+  border-top: 3px solid var(--theme-green);
+}
+
+.back-link {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 999;
+  background: rgba(27, 94, 32, 0.85);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+.back-link:hover {
+  background: rgba(27, 94, 32, 1);
+  color: #ffeb3b;
+}
