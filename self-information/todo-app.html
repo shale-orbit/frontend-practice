@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人信息展示页之任务清单</title>
+  <link rel="icon" href="data:">
+  <link href="libs/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg site-nav sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">我的个人主页</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="切换导航">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">关于我</a></li>
+          <li class="nav-item"><a class="nav-link" href="figure.html">我敬佩的人</a></li>
+          <li class="nav-item"><a class="nav-link" href="hometown.html">我的家乡</a></li>
+          <li class="nav-item"><a class="nav-link active" href="todo-app.html">任务清单</a></li>
+          <li class="nav-item"><a class="nav-link" href="campus.html">我的校园</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5" style="max-width: 640px;">
+    <h1 class="h3 mb-1">我的任务清单</h1>
+    <p class="text-muted small">任务数据保存在浏览器 localStorage 中，「关于我」首页的进度条会实时同步。</p>
+
+    <form id="add-form" class="input-group mb-2">
+      <input type="text" id="task-input" class="form-control" placeholder="要做什么？">
+      <button type="submit" class="btn btn-success">添加</button>
+    </form>
+    <p class="text-danger small" id="tip"></p>
+    <div class="filters btn-group mb-3" role="group" aria-label="任务筛选">
+      <button type="button" class="btn btn-outline-success active" data-filter="all">全部</button>
+      <button type="button" class="btn btn-outline-success" data-filter="active">未完成</button>
+      <button type="button" class="btn btn-outline-success" data-filter="done">已完成</button>
+    </div>
+    <ul class="list-group" id="task-list"></ul>
+  </main>
+
+  <footer class="site-footer text-center text-muted py-4 bg-white">
+    <p class="mb-1">个人信息展示台</p>
+  </footer>
+
+  <script src="libs/bootstrap.bundle.min.js"></script>
+  <script src="js/todo-app.js"></script>
+</body>
+</html>
