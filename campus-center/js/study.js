@@ -1,11 +1,4 @@
-const rooms = [
-    { id: 1, name: '第一自习室', floor: '1楼', open: true,  seats: 120 },
-    { id: 2, name: '第二自习室', floor: '1楼', open: true,  seats: 80 },
-    { id: 3, name: '第三自习室', floor: '2楼', open: false, seats: 60 },
-    { id: 4, name: '第四自习室', floor: '2楼', open: true,  seats: 100 },
-    { id: 5, name: '第五自习室', floor: '3楼', open: true,  seats: 90 },
-    { id: 6, name: '第六自习室', floor: '3楼', open: false, seats: 50 },
-];
+let rooms=[];
 
 const floorSelect = document.querySelector('#floor-filter');
 const statusSelect = document.querySelector('#status-filter');
@@ -57,4 +50,20 @@ const render = () => {
 floorSelect.addEventListener('change', render);
 statusSelect.addEventListener('change', render);
 
-render();
+const loadData = async () => {
+    const statusEl = document.querySelector('#load-status');
+    try {
+        const response = await fetch('data/data.json');
+        if (!response.ok) {
+            throw new Error('HTTP ' + response.status);   
+        }
+        const data = await response.json();
+        rooms = data.studyRooms;   
+        render();
+    } catch (error) {
+        statusEl.textContent = '自习室数据加载失败，请检查网络或 data.json 是否存在(' + error.message + ')';
+        statusEl.classList.remove('d-none');  
+    }
+};
+
+loadData();   

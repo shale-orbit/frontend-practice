@@ -2,6 +2,14 @@
   "title": "各自习室使用量统计",
   "unit": "人次",
   "source": "课程统一数据集 data.json",
+  "studyRooms":[
+    {"id":1,"name":"第一自习室","floor":"1楼","open":true,"seats":120},
+    {"id":2,"name":"第二自习室","floor":"1楼","open":true,"seats":80},
+    {"id":3,"name":"第三自习室","floor":"2楼","open":false,"seats":60},
+    {"id":4,"name":"第四自习室","floor":"2楼","open":true,"seats":100},
+    {"id":5,"name":"第五自习室","floor":"3楼","open":true,"seats":90},
+    {"id":6,"name":"第六自习室","floor":"3楼","open":false,"seats":50}
+  ],
   "rooms": ["第一自习室", "第二自习室", "第三自习室", "第四自习室", "第五自习室", "第六自习室"],
   "values": [320, 452, 268, 390, 185, 274]
 }
