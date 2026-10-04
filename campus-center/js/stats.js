@@ -29,7 +29,34 @@ const renderChart = (data) => {
         }]
     });
 };
-
+let trendChart = null;
+const renderTrend = (trend) => {
+    if (trendChart) {
+        trendChart.destroy();   
+    }
+    trendChart = new Chart(
+        document.querySelector('#trend-chart'),
+        {
+            type: 'line',
+            data: {
+                labels: trend.days,
+                datasets: [{
+                    label: '人流量',
+                    data: trend.values,
+                    borderColor: '#0d6efd',
+                    backgroundColor: '#0d6efd',
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,   
+                plugins: { title: { display: true, text: trend.title } },
+                scales: { y: { beginAtZero: true } }   
+            }
+        }
+    );
+};
 const loadData = async () => {
     statusEl.textContent = '数据加载中...';
     statusEl.className = 'alert alert-info';
@@ -42,6 +69,7 @@ const loadData = async () => {
         statusEl.classList.add('d-none');
         sourceEl.textContent = '数据来源：' + data.source;  // 数据来源：检查点2要求
         renderChart(data);
+        renderTrend(data.trend);
     } catch (error) {
         // 断网或 data.json 丢失时提示，不能白屏（第三步"断网提示"自查项）
         statusEl.textContent = '数据加载失败，请检查网络或 data.json 是否存在（' + error.message + '）';
